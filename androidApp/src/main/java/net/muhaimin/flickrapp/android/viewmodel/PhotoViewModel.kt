@@ -11,4 +11,9 @@ import javax.inject.Inject
 @Inject constructor():ViewModel(){
 
     val loading: MutableState<Boolean> = mutableStateOf(false)
+    val query: MutableState<Boolean> = mutableStateOf(false)
+
+    private fun search(){
+
+    }
 }
