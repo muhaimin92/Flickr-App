@@ -7,3 +7,11 @@ CREATE TABLE  PhotoTable(
 selectAll:
 SELECT *
 FROM PhotoTable;
+
+insertPhoto:
+INSERT OR REPLACE
+INTO PhotoTable(
+    id ,
+    title,
+    url
+)VALUES (?, ?, ?);

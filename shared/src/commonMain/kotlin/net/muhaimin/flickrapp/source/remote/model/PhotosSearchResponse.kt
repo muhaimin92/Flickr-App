@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class PhotosSearchResponse(
 
     @SerialName("photos")
-    val photos: PhotosResponse,
+    val photosResponse: PhotosResponse,
 
     @SerialName("stat")
     val stat: String,
@@ -23,7 +23,7 @@ data class PhotosResponse(
     val total: Int,
 
     @SerialName("photo")
-    val photoList: List<PhotoResponse>
+    val photoListResponse: List<PhotoResponse>
 
 )
 

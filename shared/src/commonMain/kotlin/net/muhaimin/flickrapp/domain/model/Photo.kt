@@ -1,7 +1,7 @@
 package net.muhaimin.flickrapp.domain.model
 
 data class Photo(
-    val id: String,
+    val id: Long,
     val title: String,
     val url : String
 )
