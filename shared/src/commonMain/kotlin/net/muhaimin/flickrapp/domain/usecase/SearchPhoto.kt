@@ -36,7 +36,7 @@ class SearchPhoto(
                     Photo(
                         id = entity.id,
                         title = entity.title,
-                        url = entity.title,
+                        url = entity.url,
                         )
                 )
             }

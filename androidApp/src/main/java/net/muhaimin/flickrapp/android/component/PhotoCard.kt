@@ -10,49 +10,60 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.rememberImagePainter
+import coil.transform.CircleCropTransformation
 import net.muhaimin.flickrapp.android.R
+
 
 @Composable
 fun PhotoCard(
-    onClick: () -> Unit
+    title: String,
+    url : String
 ) {
     Card(
-        shape = MaterialTheme.shapes.small,
+
+        shape = RoundedCornerShape(10.dp),
+        elevation = 5.dp,
         modifier = Modifier
             .padding(
-                bottom = 10.dp,
-                top = 10.dp
+                start = 15.dp,
+                top = 15.dp,
+                end = 15.dp,
+                bottom = 15.dp
             )
             .fillMaxWidth()
-            .clickable(onClick = onClick)
     ) {
-        Column {
+        Box(
+            modifier = Modifier.height(200.dp)
+        ) {
 
-            Row(
+            Image(
+                painter = rememberImagePainter(
+                    data =url,
+                ),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
+            )
+
+            Box(
                 modifier = Modifier
-                    .padding(
-                        start = 10.dp,
-                        bottom = 10.dp,
-                        top = 10.dp,
-                        end = 10.dp
-                    )
-
+                    .fillMaxSize()
+                    .padding(12.dp),
+                contentAlignment = Alignment.BottomStart
             ) {
                 Text(
-                    text = "hai",
-                    modifier = Modifier
-                        .wrapContentWidth(Alignment.Start)
-                )
-
-                Text(
-                    text = "hai",
-                    modifier = Modifier
-                        .wrapContentWidth(Alignment.End)
+                    text = title,
+                    style = TextStyle(color = Color.White, fontSize = 16.sp)
                 )
             }
-
         }
     }
 }
