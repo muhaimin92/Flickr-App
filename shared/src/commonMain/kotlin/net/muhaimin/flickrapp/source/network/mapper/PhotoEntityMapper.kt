@@ -1,8 +1,8 @@
-package net.muhaimin.flickrapp.source.remote.mapper
+package net.muhaimin.flickrapp.source.network.mapper
 
-import net.muhaimin.flickrapp.domain.DomainMapper
+import net.muhaimin.flickrapp.domain.util.DomainMapper
 import net.muhaimin.flickrapp.domain.model.Photo
-import net.muhaimin.flickrapp.source.remote.model.PhotosSearchResponse
+import net.muhaimin.flickrapp.source.network.model.PhotosSearchResponse
 
 class PhotoEntityMapper : DomainMapper<PhotosSearchResponse, List<Photo>> {
 

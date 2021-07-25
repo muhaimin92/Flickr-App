@@ -6,8 +6,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,9 +30,11 @@ fun PhotoCard(
     title: String,
     url : String
 ) {
+    val selected = remember { mutableStateOf(false) }
+
     Card(
 
-        shape = RoundedCornerShape(10.dp),
+        shape = RoundedCornerShape(4.dp),
         elevation = 5.dp,
         modifier = Modifier
             .padding(
@@ -39,6 +44,7 @@ fun PhotoCard(
                 bottom = 15.dp
             )
             .fillMaxWidth()
+            .clickable { selected.value = !selected.value }
     ) {
         Box(
             modifier = Modifier.height(200.dp)
@@ -50,7 +56,7 @@ fun PhotoCard(
                 ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
             )
 
             Box(
@@ -63,6 +69,13 @@ fun PhotoCard(
                     text = title,
                     style = TextStyle(color = Color.White, fontSize = 16.sp)
                 )
+            }
+
+            Surface(
+                color = if(selected.value) Color.Blue.copy(alpha = 0.6f) else MaterialTheme.colors.surface.copy(alpha = 0f),
+                modifier = Modifier.fillMaxSize()
+            ){
+                //....
             }
         }
     }

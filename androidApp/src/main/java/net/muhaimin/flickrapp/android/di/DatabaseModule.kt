@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 import net.muhaimin.flickrapp.android.BaseApplication
 import net.muhaimin.flickrapp.db.AppDatabase
 import net.muhaimin.flickrapp.source.db.DatabaseDriverFactory
-import net.muhaimin.flickrapp.source.remote.mapper.PhotoEntityMapper
+import net.muhaimin.flickrapp.source.network.mapper.PhotoEntityMapper
 import javax.inject.Singleton
 
 @Module

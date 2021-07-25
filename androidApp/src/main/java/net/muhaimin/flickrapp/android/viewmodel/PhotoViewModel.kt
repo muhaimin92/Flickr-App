@@ -1,6 +1,7 @@
 package net.muhaimin.flickrapp.android.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PhotoViewModel
 @Inject constructor(
+    private val application: Application,
     private val searchPhoto: SearchPhoto
 ) : ViewModel() {
 
@@ -33,7 +35,7 @@ class PhotoViewModel
             }
 
             it.errorMsg?.let { error ->
-                println("nabilah error " + error)
+                Toast.makeText(application.applicationContext,error,Toast.LENGTH_SHORT).show()
             }
             loading.value = false
         }.launchIn(viewModelScope)

@@ -1,4 +1,4 @@
-package net.muhaimin.flickrapp.domain
+package net.muhaimin.flickrapp.domain.util
 
 interface DomainMapper  <T, DomainModel>{
 

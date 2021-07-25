@@ -1,4 +1,4 @@
-package net.muhaimin.flickrapp.domain
+package net.muhaimin.flickrapp.domain.datamodel
 
 data class TaskResult<out R>(
     val data: R? = null,

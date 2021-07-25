@@ -1,4 +1,4 @@
-package net.muhaimin.flickrapp.source.remote.model
+package net.muhaimin.flickrapp.source.network.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
