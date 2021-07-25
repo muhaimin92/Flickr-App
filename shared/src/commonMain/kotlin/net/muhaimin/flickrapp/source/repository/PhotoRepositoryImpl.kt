@@ -11,26 +11,31 @@ import net.muhaimin.flickrapp.domain.model.Photo
 import net.muhaimin.flickrapp.domain.repository.PhotoRepository
 import net.muhaimin.flickrapp.source.network.model.PhotosSearchResponse
 
-class PhotoRepositoryImpl(private val appDatabase: AppDatabase): PhotoRepository {
+class PhotoRepositoryImpl(private val appDatabase: AppDatabase) : PhotoRepository {
 
     private val client: HttpClient = HttpClient() {
         install(JsonFeature) {
-            serializer = KotlinxSerializer(kotlinx.serialization.json.Json{
+            serializer = KotlinxSerializer(kotlinx.serialization.json.Json {
                 ignoreUnknownKeys = true
             })
         }
     }
 
-    private val queries : PhotoDbQueries = appDatabase.photoDbQueries
+    private val queries: PhotoDbQueries = appDatabase.photoDbQueries
 
 
     override suspend fun searchFromApi(apiKey: String, tag: String): PhotosSearchResponse {
-        return client.get(FLICKR_BASE_URL+"?api_key=${apiKey}&method=flickr.photos.search&tags=${tag}&format=json&nojsoncallback=true&extras=media&extras=url_sq&extras=url_m&per_page=20&page=1"){
+        return client.get(FLICKR_BASE_URL + "?api_key=${apiKey}&method=flickr.photos.search&tags=${tag}&format=json&nojsoncallback=true&extras=media&extras=url_sq&extras=url_m&per_page=20&page=1") {
         }
     }
 
     override suspend fun insertLocal(photo: Photo) {
-        queries.insertPhoto(id = photo.id, url = photo.url, title = photo.title)
+        queries.insertPhoto(
+            id = photo.id,
+            url = photo.url,
+            title = photo.title,
+            date_added = photo.dateAdded
+        )
     }
 
     override suspend fun getAllLocal(): List<Photo> {
@@ -43,6 +48,7 @@ class PhotoRepositoryImpl(private val appDatabase: AppDatabase): PhotoRepository
                     id = entity.id,
                     title = entity.title,
                     url = entity.url,
+                    dateAdded = entity.date_added
                 )
             )
         }

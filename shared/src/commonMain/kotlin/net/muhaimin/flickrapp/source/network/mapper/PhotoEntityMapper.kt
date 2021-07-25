@@ -3,6 +3,7 @@ package net.muhaimin.flickrapp.source.network.mapper
 import net.muhaimin.flickrapp.domain.util.DomainMapper
 import net.muhaimin.flickrapp.domain.model.Photo
 import net.muhaimin.flickrapp.source.network.model.PhotosSearchResponse
+import net.muhaimin.flickrapp.utils.DateUtils
 
 class PhotoEntityMapper : DomainMapper<PhotosSearchResponse, List<Photo>> {
 
@@ -13,7 +14,8 @@ class PhotoEntityMapper : DomainMapper<PhotosSearchResponse, List<Photo>> {
                 Photo(
                     id =photoResponse.id.toLong(),
                     title =photoResponse.title,
-                    url =photoResponse.url
+                    url =photoResponse.url,
+                    dateAdded = DateUtils().currentDateTime()
                 )
             )
         }

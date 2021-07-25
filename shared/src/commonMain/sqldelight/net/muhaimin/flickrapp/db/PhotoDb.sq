@@ -1,17 +1,20 @@
 CREATE TABLE  PhotoTable(
     id INTEGER NOT NULL PRIMARY KEY,
     title TEXT NOT NULL,
-    url TEXT NOT NULL
+    url TEXT NOT NULL,
+    date_added TEXT NOT NULL
 );
 
 selectAll:
 SELECT *
-FROM PhotoTable;
+FROM PhotoTable
+ORDER BY date(date_added) DESC;
 
 insertPhoto:
 INSERT OR REPLACE
 INTO PhotoTable(
     id ,
     title,
-    url
-)VALUES (?, ?, ?);
+    url,
+    date_added
+)VALUES (?, ?, ?,?);

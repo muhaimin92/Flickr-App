@@ -38,6 +38,7 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:1.6.1")
                 implementation("io.ktor:ktor-client-serialization:1.6.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.1")
 
             }
         }

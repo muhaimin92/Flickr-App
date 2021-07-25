@@ -6,6 +6,7 @@ import net.muhaimin.flickrapp.domain.datamodel.TaskResult
 import net.muhaimin.flickrapp.domain.model.Photo
 import net.muhaimin.flickrapp.domain.repository.PhotoRepository
 import net.muhaimin.flickrapp.source.network.mapper.PhotoEntityMapper
+import net.muhaimin.flickrapp.utils.DateUtils
 
 class SearchPhoto(
     private val photoRepository: PhotoRepository,
