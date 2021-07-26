@@ -36,9 +36,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("MainActivity ${viewModel}")
         viewModel.search()
-
 
         setContent {
 
@@ -47,7 +45,8 @@ class MainActivity : ComponentActivity() {
                     SearchToolbar(
                         query = viewModel.query.value,
                         onQueryChanged = { viewModel.setQuery(it) },
-                        onSearchClicked = { viewModel.search() }
+                        onSearchClicked = { viewModel.search() },
+                        onSaveClicked = { viewModel.downloadSelectedPhoto()}
                     )
                 },
             ) {
@@ -58,13 +57,20 @@ class MainActivity : ComponentActivity() {
                         itemsIndexed(
                             items = viewModel.photos.value
                         ) { index, item ->
-                            PhotoCard(title = item.title, url = item.url)
+                            PhotoCard(
+                                photo = item,
+                                onSelectedPhoto = { photo, isSelected ->
+                                    viewModel.isPhotoSelected(
+                                        photo,
+                                        isSelected
+                                    )
+                                }
+                            )
                         }
 
                     }
                     ProgressBar(isDisplayed = viewModel.loading.value)
                 }
-
 
             }
 

@@ -23,12 +23,13 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import net.muhaimin.flickrapp.android.R
+import net.muhaimin.flickrapp.domain.model.Photo
 
 
 @Composable
 fun PhotoCard(
-    title: String,
-    url : String
+    photo: Photo,
+    onSelectedPhoto: (photo: Photo,isSelected:Boolean) -> Unit
 ) {
     val selected = remember { mutableStateOf(false) }
 
@@ -44,7 +45,10 @@ fun PhotoCard(
                 bottom = 15.dp
             )
             .fillMaxWidth()
-            .clickable { selected.value = !selected.value }
+            .clickable {
+                selected.value = !selected.value
+                onSelectedPhoto(photo,selected.value)
+            }
     ) {
         Box(
             modifier = Modifier.height(200.dp)
@@ -52,7 +56,7 @@ fun PhotoCard(
 
             Image(
                 painter = rememberImagePainter(
-                    data =url,
+                    data =photo.url,
                 ),
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
@@ -66,7 +70,7 @@ fun PhotoCard(
                 contentAlignment = Alignment.BottomStart
             ) {
                 Text(
-                    text = title,
+                    text = photo.title,
                     style = TextStyle(color = Color.White, fontSize = 16.sp)
                 )
             }

@@ -11,14 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import net.muhaimin.flickrapp.android.R
 
 @Composable
 fun SearchToolbar(
     query:String,
     onQueryChanged: (String) -> Unit,
     onSearchClicked: () -> Unit,
+    onSaveClicked: () -> Unit,
 ){
     Column {
         Row(
@@ -40,6 +43,16 @@ fun SearchToolbar(
             ) {
                 Icon(
                     Icons.Filled.Search,
+                    "contentDescription",
+                    tint = Color.Blue)
+            }
+
+            IconButton(
+                onClick = { onSaveClicked() },
+                modifier = Modifier.align(Alignment.CenterVertically)
+            ) {
+                Icon(
+                    painterResource(id = R.drawable.ic_save),
                     "contentDescription",
                     tint = Color.Blue)
             }
