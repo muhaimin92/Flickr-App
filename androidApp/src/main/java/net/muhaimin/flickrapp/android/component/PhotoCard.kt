@@ -79,7 +79,7 @@ fun PhotoCard(
                 color = if(selected.value) Color.Blue.copy(alpha = 0.6f) else MaterialTheme.colors.surface.copy(alpha = 0f),
                 modifier = Modifier.fillMaxSize()
             ){
-                //....
+
             }
         }
     }

@@ -13,4 +13,4 @@
 - Couroutine
 - Hilt
 - Jetpack Compose
-- Hilt
+- Coin

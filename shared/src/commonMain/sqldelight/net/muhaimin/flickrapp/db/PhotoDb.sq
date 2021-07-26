@@ -8,7 +8,7 @@ CREATE TABLE  PhotoTable(
 selectAll:
 SELECT *
 FROM PhotoTable
-ORDER BY date(date_added) DESC;
+ORDER BY date_added DESC;
 
 insertPhoto:
 INSERT OR REPLACE
